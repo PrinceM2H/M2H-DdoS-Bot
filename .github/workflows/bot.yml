@@ -1,10 +1,13 @@
-name: Run Telegram Bot
+name: Telegram Bot CI
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Start bot
+    - name: Run Telegram bot
       run: |
-        nohup python main.py &
+        python serverr.py
